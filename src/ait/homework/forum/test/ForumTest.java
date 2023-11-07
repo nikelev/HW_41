@@ -26,13 +26,13 @@ class ForumTest {
     void setUp() {
         forum =new ForumImpl();
         posts =new Post[5];
-        posts[0]=new Post(001,"title1","author1","content0");
+        posts[0]=new Post(111,"title1","author1","content0");
         posts[0].setDate(ldt.minusDays(1));
-        posts[1]=new Post(002,"title2","author2","content1");
+        posts[1]=new Post(222,"title2","author2","content1");
         posts[1].setDate(ldt.minusDays(2));
-        posts[2]=new Post(003,"title1","author1","content2");
+        posts[2]=new Post(333,"title1","author1","content2");
         posts[2].setDate(ldt.minusDays(1));
-        posts[3]=new Post(004,"title3","author3","content3");
+        posts[3]=new Post(444,"title3","author3","content3");
         posts[3].setDate(ldt.minusDays(3));
         for (int i = 0; i < posts.length; i++) {
             forum.addPost(posts[i]);
@@ -47,25 +47,26 @@ class ForumTest {
         assertTrue(forum.addPost(post));
         assertEquals(5,forum.size());
 
+
     }
 
     @Test
     void removePost() {
         assertFalse(forum.removePost(9999999));
-        assertTrue(forum.removePost(002));
+        assertTrue(forum.removePost(222));
         assertEquals(3,forum.size());
-        assertNull(forum.removePost(002));
+        assertNull(forum.removePost(222));
     }
 
     @Test
     void updatePost() {
-        assertTrue(forum.updatePost(002,"content1content"));
-        assertEquals("content1content",forum.getPostById(002).getContent);
+        assertTrue(forum.updatePost(222,"content1content"));
+        assertEquals("content1content",forum.getPostById(222).getContent());
     }
 
     @Test
     void getPostById() {
-        assertEquals(posts[1], forum.getPostById(002));
+        assertEquals(posts[1], forum.getPostById(222));
         assertNull(forum.getPostById(99999));
     }
 
